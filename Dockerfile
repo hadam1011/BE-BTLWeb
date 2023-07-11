@@ -1,33 +1,8 @@
-# Sử dụng hình ảnh chứa Java và Apache Maven để xây dựng ứng dụng
-FROM maven:3.8.3-openjdk-11-slim AS build
+FROM maven:3.8.3-openjdk-17 AS build
+COPY . .
+RUN mvn clean package -DskipTests
 
-# Thiết lập thư mục làm việc
-WORKDIR /app
-
-# Sao chép tệp pom.xml để tải các phụ thuộc trước
-COPY pom.xml .
-
-# Tải các phụ thuộc từ pom.xml
-RUN mvn dependency:go-offline -B
-
-# Sao chép mã nguồn của ứng dụng
-COPY src ./src
-
-# Cài đặt proxy cho Maven
-ENV http_proxy http://your-proxy-host:your-proxy-port
-ENV https_proxy http://your-proxy-host:your-proxy-port
-
-# Xây dựng ứng dụng
-RUN mvn package -DskipTests
-
-# Sử dụng hình ảnh chứa OpenJDK để chạy ứng dụng
-FROM adoptopenjdk/openjdk11:alpine-jre
-
-# Sao chép gói đã xây dựng từ giai đoạn trước
-COPY --from=build /app/target/*.jar app.jar
-
-# Thiết lập cổng mà ứng dụng lắng nghe trên (đảm bảo đúng cổng mà ứng dụng của bạn lắng nghe)
+FROM openjdk:17.0.1-jdk-slim
+COPY --from=build /target/demo-0.0.1-SNAPSHOT.jar demo.jar
 EXPOSE 8080
-
-# Chạy ứng dụng khi container được khởi chạy
-CMD ["java", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-jar", "demo.jar"]
