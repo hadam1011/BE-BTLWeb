@@ -13,6 +13,10 @@ RUN mvn dependency:go-offline -B
 # Sao chép mã nguồn của ứng dụng
 COPY src ./src
 
+# Cài đặt proxy cho Maven
+ENV http_proxy http://your-proxy-host:your-proxy-port
+ENV https_proxy http://your-proxy-host:your-proxy-port
+
 # Xây dựng ứng dụng
 RUN mvn package -DskipTests
 
