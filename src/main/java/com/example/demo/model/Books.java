@@ -1,4 +1,4 @@
-	package com.example.demo.model;
+package com.example.demo.model;
 
 import java.sql.Date;
 
@@ -39,16 +39,17 @@ public class Books {
 	@Column(name = "totalpage")
 	private int totalpage;
 	
-	@Column(name = "star")
-	private int star;
+	@Column(name = "price")
+	private int price;
 	
-	@Column(name = "comment")
-	private int comment;
+	@Column(name = "remain")
+	private int remain;
 	
 	public Books () {}
 
 	public Books(int bookcode, String title, String author, String category, Date establish, String avatar,
-			String description, int sold, int totalpage, int star, int comment) {
+			String description, int sold, int totalpage, int price, int remain) {
+		super();
 		this.bookcode = bookcode;
 		this.title = title;
 		this.author = author;
@@ -58,8 +59,8 @@ public class Books {
 		this.description = description;
 		this.sold = sold;
 		this.totalpage = totalpage;
-		this.star = star;
-		this.comment = comment;
+		this.price = price;
+		this.remain = remain;
 	}
 
 	public int getBookcode() {
@@ -134,20 +135,20 @@ public class Books {
 		this.description = description;
 	}
 
-	public int getStar() {
-		return star;
+	public int getPrice() {
+		return price;
 	}
 
-	public void setStar(int star) {
-		this.star = star;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 
-	public int getComment() {
-		return comment;
+	public int getRemain() {
+		return remain;
 	}
 
-	public void setComment(int comment) {
-		this.comment = comment;
+	public void setRemain(int remain) {
+		this.remain = remain;
 	}
-	
+
 }

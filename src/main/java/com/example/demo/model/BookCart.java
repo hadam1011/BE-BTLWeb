@@ -24,25 +24,25 @@ public class BookCart {
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "purchase_time")
-	private Date purchase;
-	
 	@Column(name = "quantity")
 	private int quantity;
 	
-	@Column(name = "status")
-	private String status;
+	@Column(name = "price")
+	private int price;
+	
+	@Column(name = "total")
+	private int total;
 	
 	public BookCart() {}
-
-	public BookCart(int book_cartid, int userid, int bookid, String title, Date purchase, int quantity, String status) {
+	
+	public BookCart(int book_cartid, int userid, int bookid, String title, int quantity, int price, int total) {
 		this.book_cartid = book_cartid;
 		this.userid = userid;
 		this.bookid = bookid;
 		this.title = title;
-		this.purchase = purchase;
 		this.quantity = quantity;
-		this.status = status;
+		this.price = price;
+		this.total = total;
 	}
 
 	public int getBook_cartid() {
@@ -68,15 +68,7 @@ public class BookCart {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
-	public Date getPurchase() {
-		return purchase;
-	}
-
-	public void setPurchase(Date purchase) {
-		this.purchase = purchase;
-	}
-
+	
 	public int getQuantity() {
 		return quantity;
 	}
@@ -85,19 +77,27 @@ public class BookCart {
 		this.quantity = quantity;
 	}
 
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
-
 	public int getBookid() {
 		return bookid;
 	}
 
 	public void setBookid(int bookid) {
 		this.bookid = bookid;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+
+	public int getTotal() {
+		return total;
+	}
+
+	public void setTotal(int total) {
+		this.total = total;
 	}
 }

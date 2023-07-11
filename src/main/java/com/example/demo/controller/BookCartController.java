@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+	package com.example.demo.controller;
 
 import java.util.List;
 
@@ -38,11 +38,10 @@ public class BookCartController {
 	
 	@PutMapping("/book-cart/{id}")
 	public BookCart updateBookCart (@PathVariable String id, @RequestBody BookCart bookcart) {
-		//update số sách đã bán
-		Books book = bookService.findByTitle(bookcart.getTitle()).get();
-		book.setSold(book.getSold() + bookcart.getQuantity());
-		bookService.saveBook(book);
-		
+//		//update số sách đã bán
+//		Books book = bookService.findByTitle(bookcart.getTitle()).get();
+//		book.setSold(book.getSold() + bookcart.getQuantity());
+//		bookService.saveBook(book);
 		bookcart.setBook_cartid(Integer.valueOf(id));
 		return bookCartService.saveBookCart(bookcart);
 	}

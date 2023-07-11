@@ -40,8 +40,6 @@ public class UserService {
 			if (comment.getUserid() == id) {
 				serviceComment.deleteComment(comment.getCommentid());
 				Books book = serviceBook.getBook(comment.getBookid());
-				book.setComment(book.getComment() - 1);
-				book.setStar(book.getStar() - comment.getStar());
 				serviceBook.saveBook(book);
 			}
 		}

@@ -22,20 +22,22 @@ public class Comment {
 	@Column(name = "content")
 	private String content;
 	
-	@Column(name = "star")
-	private int star;
-	
 	@Column(name = "username")
 	private String username;
 	
-	public Comment() {}
+	@Column(name = "date")
+	private String date;
 	
-	public Comment(int userid, int bookid, String content, int star, String username) {
+	public Comment() {}
+
+	public Comment(int commentid, int userid, int bookid, String content, String username, String date) {
+		super();
+		this.commentid = commentid;
 		this.userid = userid;
 		this.bookid = bookid;
 		this.content = content;
-		this.star = star;
 		this.username = username;
+		this.date = date;
 	}
 
 	public int getUserid() {
@@ -62,14 +64,6 @@ public class Comment {
 		this.content = content;
 	}
 
-	public int getStar() {
-		return star;
-	}
-
-	public void setStar(int star) {
-		this.star = star;
-	}
-
 	public String getUsername() {
 		return username;
 	}
@@ -84,5 +78,13 @@ public class Comment {
 
 	public void setCommentid(int commentid) {
 		this.commentid = commentid;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

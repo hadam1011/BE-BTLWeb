@@ -63,4 +63,8 @@ public class BookService {
 	public Optional<Books> findByTitle(String title) {
 		return repo.findByTitle(title);
 	}
+	
+	public Optional<Books> findByAuthor(String title) {
+		return repo.findByAuthor(title);
+	}
 }

@@ -39,11 +39,7 @@ public class CommentController {
 	public void deleteComment(@PathVariable String id) {
 		//update book
 		Comment comment = commentService.findById(Integer.valueOf(id)).get();
-		Books book = bookService.getBook(comment.getBookid());
-		book.setComment(book.getComment() - 1);
-		book.setStar(book.getStar() - comment.getStar());
-		bookService.saveBook(book);
-		
+		Books book = bookService.getBook(comment.getBookid());	
 		commentService.deleteComment(Integer.valueOf(id));
 	}
 }
