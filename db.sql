@@ -57,4 +57,17 @@ insert into user (username, password, role, email, dob)
 values ('admin', 'admin1011', 'manager', 'admin@gmail.com', '2002-10-10'),
 ('B20DCCN211', 'hadam1011', 'user', 'hadam8910@gmail.com', '2023-05-09'),
 ('B20DCCN406', 'hadam1011', 'user', 'hadam8910@gmail.com', '2023-06-07');
+
+CREATE TABLE `railway`.`order` (
+  `orderid` INT NOT NULL,
+  `userid` INT NOT NULL,
+  `bookid` INT NOT NULL,
+  `title` TINYTEXT NOT NULL,
+  `author` TINYTEXT NOT NULL,
+  `quantity` INT NOT NULL,
+  `price` INT NOT NULL,
+  `total` TINYTEXT NOT NULL,
+  `date` DATE NOT NULL,
+  PRIMARY KEY (`orderid`));
+
         
