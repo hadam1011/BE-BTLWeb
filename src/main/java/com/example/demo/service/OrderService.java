@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.model.Order;
+import com.example.demo.model.Orders;
 import com.example.demo.repository.OrderRepository;
 
 import jakarta.persistence.EntityManager;
@@ -19,18 +19,26 @@ public class OrderService {
 	@PersistenceContext
     private EntityManager entityManager;
 	
-	public List<Order> getAllByUserid(int id) {
-		String sql = "select s from Order s where s.userid = :id";
-		return entityManager.createQuery(sql, Order.class)
+	public List<Orders> getAll() {
+		return orderRepo.findAll();
+	}
+	
+	public List<Orders> getAllByUserid(int id) {
+		String sql = "select s from Orders s where s.userid = :id";
+		return entityManager.createQuery(sql, Orders.class)
 				.setParameter("id", id)
 				.getResultList();
 	}
 	
-	public Order create (Order order) {
+	public Orders create (Orders order) {
 		return orderRepo.save(order);
 	}
 	
 	public void delete (int id) {
 		orderRepo.deleteById(id);
+	}
+	
+	public List<Orders> getAllByBookid(int id){
+		return orderRepo.findByBookid(id);
 	}
 }

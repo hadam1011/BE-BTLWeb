@@ -9,9 +9,9 @@ import org.springframework.stereotype.Service;
 import com.example.demo.model.BookCart;
 import com.example.demo.model.Books;
 import com.example.demo.model.Comment;
+import com.example.demo.model.Orders;
 import com.example.demo.model.Star;
 import com.example.demo.repository.BookRepository;
-import com.example.demo.repository.CommentRepository;
 
 @Service
 public class BookService {
@@ -26,6 +26,9 @@ public class BookService {
 	
 	@Autowired
 	private StarService starService;
+	
+	@Autowired
+	private OrderService ordersService;
 	
 	public List<Books> getBooks() {
 		return repo.findAll();
@@ -61,10 +64,16 @@ public class BookService {
 			serviceBookCart.deleteBookCart(bookcart.getBook_cartid());
 		}
 		
-		//xoa sao
+		// xóa sao
 		List<Star> stars = starService.getAllByBookid(id);
 		for (Star star: stars) {
 			starService.delete(star.getStarid());
+		}
+		
+		// xóa sách trong lịch sử mua hàng
+		List<Orders> orders = ordersService.getAllByBookid(id);
+		for (Orders order : orders) {
+			ordersService.delete(order.getOrderid());
 		}
 		
 		repo.deleteById(id);

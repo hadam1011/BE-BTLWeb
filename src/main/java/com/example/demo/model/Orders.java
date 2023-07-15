@@ -7,9 +7,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
-public class Order {
+public class Orders {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "orderid")
@@ -24,9 +25,6 @@ public class Order {
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "author")
-	private String author;
-	
 	@Column(name = "quantity")
 	private int quantity;
 	
@@ -38,14 +36,15 @@ public class Order {
 	
 	@Column(name = "date")
 	private Date date;
+	
+	public Orders() {}
 
-	public Order(int orderid, int bookid, int userid, String title, String author, int quantity, int price, int total,
+	public Orders(int orderid, int bookid, int userid, String title, int quantity, int price, int total,
 			Date date) {
 		this.orderid = orderid;
 		this.bookid = bookid;
 		this.userid = userid;
 		this.title = title;
-		this.author = author;
 		this.quantity = quantity;
 		this.price = price;
 		this.total = total;
@@ -82,14 +81,6 @@ public class Order {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public int getQuantity() {
